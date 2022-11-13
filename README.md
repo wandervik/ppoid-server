@@ -13,13 +13,13 @@ Folow [this manual](https://docs.aws.amazon.com/sdk-for-rust/latest/dg/getting-s
 
 ## Build
 ```shell
-cargo install --path [install_path]
+cargo build --release
 ```
 
 ## Run
 Just execute
 ```shell
-./[install_path]/ppoid-server
+./target/release/ppoid-server
 ```
 ## Test
 To test if server is configured and running properly run following command:
