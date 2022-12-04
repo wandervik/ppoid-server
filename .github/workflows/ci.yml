@@ -1,12 +1,12 @@
 name: Image Deployment
-# on:
-#   workflow_dispatch
 on:
-  push
+  workflow_dispatch
+# on:
+#   push
 
 env:
   AWS_REGION: "eu-central-1"
-  AWS_ROLE: arn:aws:iam::519140963702:role/github-actions-role
+  AWS_ROLE: arn:aws:iam::519140963702:role/TestGithubActionsRole
   REPO_NAME: ppoid-server
 
 
