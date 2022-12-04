@@ -2,6 +2,7 @@ use std::{env, io};
 use actix_cors::Cors;
 use actix_web::{middleware, App, HttpServer, HttpResponse, get, post, web::Path};
 use serde::{Serialize, Deserialize};
+// use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
 
 use aws_config::meta::region::RegionProviderChain;
 use aws_sdk_dynamodb::{Client, model::AttributeValue};
@@ -13,11 +14,20 @@ async fn main() -> io::Result<()> {
     env::set_var("RUST_LOG", "actix_web=debug,actix_server=info");
     env_logger::init();
 
+    // let mut builder = SslAcceptor::mozilla_intermediate(SslMethod::tls()).unwrap();
+    // builder
+    //     .set_private_key_file("key.pem", SslFiletype::PEM)
+    //     .unwrap();
+    // builder.set_certificate_chain_file("cert.pem").unwrap();
+
     HttpServer::new(|| {
         let cors = Cors::default()
             .allow_any_header()
             .allow_any_method()
-            .allow_any_origin();
+            .allowed_origin("http://ppoidgame.click")
+            .allowed_origin("http://ppoidgame.click/*")
+            .allowed_origin("https://ppoidgame.click/*")
+            .allowed_origin("https://ppoidgame.click");
         App::new()
             // enable logger - always register actix-web Logger middleware last
             .wrap(cors)
