@@ -25,7 +25,7 @@ async fn main() -> io::Result<()> {
             .service(list)
             .service(add)
     })
-    .bind("0.0.0.0:443")?
+    .bind("0.0.0.0:80")?
     .run()
     .await
 }
