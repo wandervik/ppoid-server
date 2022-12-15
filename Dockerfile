@@ -1,31 +1,3 @@
-# # FROM rust:1.64
-# # WORKDIR /ppoid-server
-# # COPY . .
-# # RUN cargo install --path .
-# # # RUN cargo build --release
-# # CMD ["./target/release/ppoid-server"]
-
-
-# # Build Stage
-# FROM rust:1.64.0 AS builder
-# WORKDIR /home/ubuntu/ppoid-server
-# RUN rustup target add x86_64-unknown-linux-musl
-
-# # RUN USER=root cargo new deciduously-com
-# # WORKDIR /usr/src/deciduously-com
-# # COPY Cargo.toml Cargo.lock ./
-# # RUN cargo build --release
-
-# COPY . .
-# RUN cargo install --target x86_64-unknown-linux-musl --path .
-
-# # Bundle Stage
-# FROM scratch
-# COPY --from=builder /usr/local/cargo/bin/ppoid-server .
-# CMD ["./ppoid-server"]
-
-
-
 ARG BASE_IMAGE=ekidd/rust-musl-builder:latest
 
 # Our first FROM statement declares the build environment.
